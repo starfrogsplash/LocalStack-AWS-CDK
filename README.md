@@ -1,4 +1,4 @@
-# LocalStack, AWS-CDK, API-GATEWAY, LAMBDA, SQS, SNS, DYNAMODB
+# LocalStack, AWS-CDK, API-GATEWAY, LAMBDA, SQS, SNS, DYNAMODB, DOCKER
 
 It demonstrates a CDK app with an instance of a stack (`AwsCdkStack`)
 Amazon SQS queue that is subscribed to an Amazon SNS topic.
@@ -23,7 +23,9 @@ awslocal lambda invoke --function-name AwsCdkStack-helloWorldLambda81908354-5fc8
 `awslocal dynamodb list-tables`
 `awslocal lambda list-functions`
 
-`awslocal logs tail /aws/lambda/AwsCdkStack-getDynamo189D0188-c9a72f32`
-`awslocal logs tail /aws/lambda/AwsCdkStack-getDynamo189D0188-c9a72f32 --follow`
+`awslocal logs tail /aws/lambda/AwsCdkStack-postDynamo67CADC45-01a7e427`
+`AwsCdkStack-getDynamo189D0188-c9a72f32 --follow`
 
 `aws --endpoint-url=http://localhost:4566 logs tail /aws/lambda/getDynamo --follow`
+
+`awslocal cloudformation list-stacks`

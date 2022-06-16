@@ -36,24 +36,33 @@ export class AwsCdkStack extends Stack {
         handler: 'handler', 
       });
 
+      const lambdadbPost= new NodejsFunction(this, 'postDynamo', {
+        entry: './lib/postDynamo/index.ts', 
+        handler: 'handler', 
+      });
+
 
       table.grantReadData(lambdadbGet);
+      table.grantReadWriteData(lambdadbPost);
 
       const api = new RestApi(this,'api',{})
 
       const lambdaIntegration = new LambdaIntegration(lambdaHello)
-      const lambdaIntegrationA = new LambdaIntegration(lambdadbGet)
+      const lambdaIntegrationDbGet = new LambdaIntegration(lambdadbGet)
+      const lambdaIntegrationDbPost = new LambdaIntegration(lambdadbPost)
       
       const lambdaResource = api.root.addResource('hello')
       lambdaResource.addMethod("GET", lambdaIntegration)
 
-      const lambdaResourceA = api.root.addResource('dynamo')
-      lambdaResourceA.addMethod("GET", lambdaIntegrationA)
+      const lambdaResourceDb = api.root.addResource('dynamo')
+      lambdaResourceDb.addMethod("GET", lambdaIntegrationDbGet)
+      lambdaResourceDb.addMethod("POST", lambdaIntegrationDbPost)
 
       new CfnOutput(this, "table name 👉", { value: `${table.tableName}` })
       new CfnOutput(this, "table arn 👉", { value: `${table.tableArn}` })
       new CfnOutput(this, "Hello-Endpoint", { value: `http://localhost:4566/restapis/${api.restApiId}/prod/_user_request_${lambdaResource.path}` })
-      new CfnOutput(this, "Dynamo-Endpoint", { value: `http://localhost:4566/restapis/${api.restApiId}/prod/_user_request_${lambdaResourceA.path}` })
+      new CfnOutput(this, "Dynamo-Endpoint", { value: `http://localhost:4566/restapis/${api.restApiId}/prod/_user_request_${lambdaResourceDb.path}` })
+
   }
 }
 
