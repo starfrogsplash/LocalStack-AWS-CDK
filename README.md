@@ -1,5 +1,7 @@
 # LocalStack, AWS-CDK, API-GATEWAY, LAMBDA, SQS, SNS, DYNAMODB, DOCKER
 
+# Severless api
+
 It demonstrates a CDK app with an instance of a stack (`AwsCdkStack`)
 Amazon SQS queue that is subscribed to an Amazon SNS topic.
 
@@ -16,16 +18,33 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 * `cdk diff`        compare deployed stack with current state
 * `cdk synth`       emits the synthesized CloudFormation template
 * `awslocal dynamodb list-tables`
-cdklocal for localstack
+
+## localstack cdk
+* `cdklocal bootstrap`
+* `cdklocal deploy`
+* `cdklocal destroy`
 
 awslocal lambda invoke --function-name AwsCdkStack-helloWorldLambda81908354-5fc8626f outfile.json
 
 `awslocal dynamodb list-tables`
-`awslocal lambda list-functions`
-
-`awslocal logs tail /aws/lambda/AwsCdkStack-postDynamo67CADC45-01a7e427`
-`AwsCdkStack-getDynamo189D0188-c9a72f32 --follow`
-
-`aws --endpoint-url=http://localhost:4566 logs tail /aws/lambda/getDynamo --follow`
-
+`awslocal lambda list-functions` - details of the lambda func, policy, runtime etc
 `awslocal cloudformation list-stacks`
+
+
+`awslocal logs tail /aws/lambda/{lambdaFncName}` - lambda logs
+e.g awslocal logs tail 
+`awslocal logs tail /aws/lambda/AwsCdkStack-getDynamo189D0188-3499c5af`
+
+
+`awslocal logs tail /aws/lambda/AwsCdkStack-getDynamo189D0188-a03765a7 --follow` - lambda logs follow
+
+`aws --endpoint-url=http://localhost:4566 logs tail /aws/lambda/{lambdaFncName} --follow`
+
+`awslocal logs tail /aws/lambda/AwsCdkStack-getDynamo189D0188-a03765a7 --follow`
+
+`awslocal logs describe-log-groups`
+
+
+```
+docker stats - to show memory usage
+```

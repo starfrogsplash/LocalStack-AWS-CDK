@@ -41,7 +41,6 @@ export class AwsCdkStack extends Stack {
         handler: 'handler', 
       });
 
-
       table.grantReadData(lambdadbGet);
       table.grantReadWriteData(lambdadbPost);
 

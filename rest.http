@@ -1,5 +1,5 @@
 
-POST  http://localhost:4566/restapis/ebnd1nxot6/prod/_user_request_/dynamo
+POST  http://localhost:4566/restapis/d8ix98hswp/prod/_user_request_/dynamo
 
 {
     "id": 1,
@@ -9,4 +9,9 @@ POST  http://localhost:4566/restapis/ebnd1nxot6/prod/_user_request_/dynamo
 
 ###GET
 
-GET  http://localhost:4566/restapis/ebnd1nxot6/prod/_user_request_/dynamo
+GET  http://localhost:4566/restapis/d8ix98hswp/prod/_user_request_/dynamo
+
+
+###GET
+
+GET  http://localhost:4566/restapis/d8ix98hswp/prod/_user_request_/hello
