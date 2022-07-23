@@ -3,7 +3,8 @@
 # Severless api
 
 It demonstrates a CDK app with an instance of a stack (`AwsCdkStack`)
-Amazon SQS queue that is subscribed to an Amazon SNS topic.
+A serverless api, (`api gateway`, with `lambda` sending and insert data to `dynamo db`)
+and an Amazon SQS queue that is subscribed to an Amazon SNS topic.
 
 The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
